@@ -253,7 +253,7 @@ export default function ContactPage() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">
+                  <label className="block font-jost text-sm font-bold text-slate-700 mb-2">
                     Full Name *
                   </label>
                   <input
@@ -267,7 +267,7 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">
+                  <label className="block font-jost text-sm font-bold text-slate-700 mb-2">
                     Email Address *
                   </label>
                   <input
@@ -284,7 +284,7 @@ export default function ContactPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">
+                  <label className="block font-jost text-sm font-bold text-slate-700 mb-2">
                     Phone Number
                   </label>
                   <input
@@ -297,7 +297,7 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">
+                  <label className="block font-jost text-sm font-bold text-slate-700 mb-2">
                     Project Type
                   </label>
                   <select
@@ -319,7 +319,7 @@ export default function ContactPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">
+                  <label className="block font-jost text-sm font-bold text-slate-700 mb-2">
                     Budget Range
                   </label>
                   <select
@@ -337,7 +337,7 @@ export default function ContactPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-2">
+                  <label className="block font-jost text-sm font-bold text-slate-700 mb-2">
                     Preferred Contact Method
                   </label>
                   <select
@@ -353,7 +353,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div>
+              <div className="font-jost">
                 <label className="block text-sm font-bold text-slate-700 mb-2">
                   Project Details
                 </label>
@@ -397,7 +397,7 @@ export default function ContactPage() {
                     Sending Message...
                   </div>
                 ) : (
-                  <div className="flex items-center justify-center">
+                  <div className="flex font-jost items-center justify-center">
                     Send Message
                     <svg
                       className="ml-2 w-5 h-5"
@@ -417,8 +417,8 @@ export default function ContactPage() {
               </button>
             </form>
 
-            <div className="mt-6 p-4 bg-slate-50 rounded-xl">
-              <p className="text-sm text-slate-600 text-center">
+            <div className="mt-6 p-4 font-jost bg-slate-50 rounded-xl">
+              <p className="text-sm font-jost text-slate-600 text-center">
                 <svg
                   className="inline w-4 h-4 mr-1"
                   fill="none"
@@ -444,10 +444,10 @@ export default function ContactPage() {
       <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-stone-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl font-playfair md:text-4xl font-bold mb-4">
               Trusted by London&apos;s Finest
             </h2>
-            <p className="text-xl text-stone-300">
+            <p className="text-xl font-jost text-stone-300">
               Over 20 years of excellence in luxury construction and renovation
             </p>
           </div>
@@ -479,11 +479,13 @@ export default function ContactPage() {
                 key={index}
                 className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur hover:bg-white/10 transition-all duration-300"
               >
-                <div className="text-3xl mb-2">{stat.icon}</div>
+                <div className="text-3xl font-jost mb-2">{stat.icon}</div>
                 <div className="text-3xl md:text-4xl font-bold text-amber-400 mb-2">
                   {stat.number}
                 </div>
-                <div className="text-stone-300 font-medium">{stat.label}</div>
+                <div className="text-stone-300 font-jost font-medium">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
@@ -555,8 +557,10 @@ export default function ContactPage() {
                 <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-stone-300 leading-relaxed">
+                <h3 className="text-xl font-jost font-bold mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-stone-300 font-jost leading-relaxed">
                   {item.description}
                 </p>
               </div>

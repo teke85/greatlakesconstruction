@@ -34,7 +34,7 @@ export default function Navbar() {
                 Kitchens
               </Link>
               <Link
-                href="/About"
+                href="/about"
                 className="text-gray-700 hover:text-green-600 px-3 py-2 font-medium"
               >
                 About

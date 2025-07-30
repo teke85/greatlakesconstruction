@@ -292,8 +292,16 @@ function Hero() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-gray-400 to-white-800 text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
+      <section
+        className="bg-gradient-to-r from-gray-400 to-white-800 text-white py-20 relative overflow-hidden bg-center bg-cover"
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dpeg7wc34/image/upload/v1753883370/shaker_chelsea_ermine_kitchen_in_olive_green_pillow_1844_mtfdst.jpg')`,
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/30"></div>
+
+        {/* Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="font-jost text-3xl md:text-5xl font-bold mb-6 luxury-heading text-white">
             Ready to Start Your
