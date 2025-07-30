@@ -20,6 +20,55 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.font-playfair {
+  font-family: var(--font-playfair), serif;
+}
+
+.font-cormorant {
+  font-family: var(--font-cormorant), serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.font-jost {
+  font-family: var(--font-jost), sans-serif;
+}
+
+/* Add these missing custom classes */
+.luxury-heading {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.text-gradient-luxury {
+  background: linear-gradient(135deg, #059669, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.luxury-button {
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  transition: all 0.3s ease;
+}
+
+.elegant-subheading {
+  font-weight: 400;
+  letter-spacing: 0.025em;
+}
+
+.premium-text {
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
