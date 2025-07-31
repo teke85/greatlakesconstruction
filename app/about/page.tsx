@@ -1,77 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const teamMembers = [
-  {
-    name: "James Mitchell",
-    role: "Founder & Managing Director",
-    experience: "25+ Years",
-    description:
-      "James founded Great Lakes Construction with a vision to bring unparalleled craftsmanship to London's luxury market. His expertise in high-end renovations has earned him recognition throughout the industry.",
-    image: "/team/james-mitchell.jpg",
-    specialties: [
-      "Luxury Renovations",
-      "Project Management",
-      "Client Relations",
-    ],
-  },
-  {
-    name: "Sarah Thompson",
-    role: "Lead Designer",
-    experience: "15+ Years",
-    description:
-      "Sarah's innovative design approach combines contemporary aesthetics with timeless elegance. She works closely with clients to bring their unique visions to life.",
-    image: "/team/sarah-thompson.jpg",
-    specialties: ["Interior Design", "Space Planning", "Material Selection"],
-  },
-  {
-    name: "Michael Roberts",
-    role: "Master Craftsman",
-    experience: "20+ Years",
-    description:
-      "Michael oversees all construction work, ensuring every detail meets our exacting standards. His traditional craftsmanship skills are complemented by modern techniques.",
-    image: "/team/michael-roberts.jpg",
-    specialties: [
-      "Kitchen Installation",
-      "Custom Carpentry",
-      "Quality Control",
-    ],
-  },
-];
-
-const milestones = [
-  {
-    year: "2003",
-    title: "Company Founded",
-    description:
-      "Great Lakes Construction established with a commitment to excellence in luxury home renovations.",
-  },
-  {
-    year: "2008",
-    title: "First Major Award",
-    description:
-      "Recognized by London Home Builders Association for outstanding craftsmanship in kitchen design.",
-  },
-  {
-    year: "2012",
-    title: "Team Expansion",
-    description:
-      "Grew to a team of 15 specialists, allowing us to take on larger and more complex projects.",
-  },
-  {
-    year: "2018",
-    title: "500th Project",
-    description:
-      "Celebrated our 500th completed project, marking a significant milestone in our journey.",
-  },
-  {
-    year: "2023",
-    title: "Sustainability Focus",
-    description:
-      "Launched our green building initiative, incorporating eco-friendly materials and energy-efficient solutions.",
-  },
-];
-
 const values = [
   {
     title: "Craftsmanship Excellence",
@@ -265,7 +194,7 @@ export default function AboutPage() {
                 <h3 className="text-xl font-jost font-bold mb-4">
                   {value.title}
                 </h3>
-                <p className="text-stone-300 leading-relaxed">
+                <p className="text-stone-300 font-jost leading-relaxed">
                   {value.description}
                 </p>
               </div>
@@ -285,191 +214,22 @@ export default function AboutPage() {
             company we are today
           </p>
         </div>
-
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-amber-400 to-orange-600 h-full hidden lg:block"></div>
-
-          <div className="space-y-12">
-            {milestones.map((milestone, index) => (
-              <div
-                key={index}
-                className={`flex items-center ${
-                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } flex-col lg:gap-16`}
-              >
-                <div className="flex-1 lg:text-right lg:pr-8">
-                  <div
-                    className={`bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-shadow duration-300 ${
-                      index % 2 === 0 ? "" : "lg:text-left lg:pl-8 lg:pr-0"
-                    }`}
-                  >
-                    <div className="text-3xl font-jost font-bold text-amber-600 mb-2">
-                      {milestone.year}
-                    </div>
-                    <h3 className="text-2xl font-jost font-bold text-slate-900 mb-4">
-                      {milestone.title}
-                    </h3>
-                    <p className="text-slate-600 font-jost leading-relaxed">
-                      {milestone.description}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Timeline dot */}
-                <div className="w-4 h-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full border-4 border-white shadow-lg z-10 hidden lg:block"></div>
-
-                <div className="flex-1"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Team Section */}
-      <div className="bg-gradient-to-br from-amber-50 to-orange-100 py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Meet Our Team
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              The master craftsmen, designers, and project managers who bring
-              your vision to life
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
-              >
-                <div className="relative h-80">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    {member.experience}
-                  </div>
-                </div>
-
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
-                    {member.name}
-                  </h3>
-                  <div className="text-amber-600 font-semibold mb-4">
-                    {member.role}
-                  </div>
-                  <p className="text-slate-600 leading-relaxed mb-6">
-                    {member.description}
-                  </p>
-
-                  <div>
-                    <h4 className="text-sm font-bold text-slate-800 mb-3">
-                      Specialties:
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {member.specialties.map((specialty, idx) => (
-                        <span
-                          key={idx}
-                          className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium"
-                        >
-                          {specialty}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Certifications & Awards */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Certifications & Awards
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Recognition from industry leaders and professional organizations
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            {
-              title: "Master Builder Association",
-              subtitle: "Certified Member",
-              year: "2003-Present",
-            },
-            {
-              title: "London Home Builders",
-              subtitle: "Excellence Award",
-              year: "2008, 2015, 2021",
-            },
-            {
-              title: "Construction Excellence",
-              subtitle: "Quality Certification",
-              year: "Annual Renewal",
-            },
-            {
-              title: "Green Building Council",
-              subtitle: "Sustainable Practices",
-              year: "2020-Present",
-            },
-          ].map((cert, index) => (
-            <div
-              key={index}
-              className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-8 h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
-                {cert.title}
-              </h3>
-              <p className="text-amber-600 font-semibold mb-1">
-                {cert.subtitle}
-              </p>
-              <p className="text-slate-600 text-sm">{cert.year}</p>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* CTA Section */}
       <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-stone-900 text-white py-20">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl font-playfair md:text-5xl font-bold mb-6">
             Ready to Work With Us?
           </h2>
-          <p className="text-xl text-stone-300 mb-8 leading-relaxed">
+          <p className="text-xl font-jost text-stone-300 mb-8 leading-relaxed">
             Let&#39;s discuss how we can bring your vision to life with our
             expert craftsmanship and dedication to excellence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white text-lg font-bold rounded-xl hover:from-amber-700 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-xl"
+              className="inline-flex font-jost items-center px-8 py-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white text-lg font-bold rounded-xl hover:from-amber-700 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-xl"
             >
               Start Your Project
               <svg
@@ -488,7 +248,7 @@ export default function AboutPage() {
             </Link>
             <Link
               href="/kitchens"
-              className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-bold rounded-xl hover:bg-white hover:text-slate-900 transition-all duration-300"
+              className="inline-flex font-jost items-center px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-bold rounded-xl hover:bg-white hover:text-slate-900 transition-all duration-300"
             >
               View Our Work
             </Link>
