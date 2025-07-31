@@ -89,8 +89,18 @@ export default function AboutPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100">
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-stone-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20"></div>
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="https://res.cloudinary.com/dpeg7wc34/image/upload/v1753967912/milano_ultra_in_pencil_grey_1760_idpil1.jpg"
+            alt="Great Lakes Construction kitchen background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-slate-900/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div className="text-center">
