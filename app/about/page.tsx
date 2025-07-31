@@ -1,432 +1,467 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { gsap } from "gsap";
 
-const teamMembers = [
-  {
-    name: "James Mitchell",
-    role: "Founder & Managing Director",
-    experience: "25+ Years",
-    description:
-      "James founded Great Lakes Construction with a vision to bring unparalleled craftsmanship to London's luxury market. His expertise in high-end renovations has earned him recognition throughout the industry.",
-    image: "/team/james-mitchell.jpg",
-    specialties: [
-      "Luxury Renovations",
-      "Project Management",
-      "Client Relations",
-    ],
-  },
-  {
-    name: "Sarah Thompson",
-    role: "Lead Designer",
-    experience: "15+ Years",
-    description:
-      "Sarah's innovative design approach combines contemporary aesthetics with timeless elegance. She works closely with clients to bring their unique visions to life.",
-    image: "/team/sarah-thompson.jpg",
-    specialties: ["Interior Design", "Space Planning", "Material Selection"],
-  },
-  {
-    name: "Michael Roberts",
-    role: "Master Craftsman",
-    experience: "20+ Years",
-    description:
-      "Michael oversees all construction work, ensuring every detail meets our exacting standards. His traditional craftsmanship skills are complemented by modern techniques.",
-    image: "/team/michael-roberts.jpg",
-    specialties: [
-      "Kitchen Installation",
-      "Custom Carpentry",
-      "Quality Control",
-    ],
-  },
-];
+type MenuCategory = "appetizers" | "mains" | "desserts" | "beverages";
 
-const milestones = [
-  {
-    year: "2003",
-    title: "Company Founded",
-    description:
-      "Great Lakes Construction established with a commitment to excellence in luxury home renovations.",
-  },
-  {
-    year: "2008",
-    title: "First Major Award",
-    description:
-      "Recognized by London Home Builders Association for outstanding craftsmanship in kitchen design.",
-  },
-  {
-    year: "2012",
-    title: "Team Expansion",
-    description:
-      "Grew to a team of 15 specialists, allowing us to take on larger and more complex projects.",
-  },
-  {
-    year: "2018",
-    title: "500th Project",
-    description:
-      "Celebrated our 500th completed project, marking a significant milestone in our journey.",
-  },
-  {
-    year: "2023",
-    title: "Sustainability Focus",
-    description:
-      "Launched our green building initiative, incorporating eco-friendly materials and energy-efficient solutions.",
-  },
-];
+type MenuItem = {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  image: string;
+  special: boolean;
+};
 
-const values = [
-  {
-    title: "Craftsmanship Excellence",
-    description:
-      "Every project is executed with meticulous attention to detail and unwavering commitment to quality.",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "Client Partnership",
-    description:
-      "We believe in building lasting relationships through transparent communication and collaborative design.",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "Innovation & Tradition",
-    description:
-      "We blend time-honored craftsmanship techniques with cutting-edge technology and materials.",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M13 10V3L4 14h7v7l9-11h-7z"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "Sustainable Practices",
-    description:
-      "Committed to environmentally responsible construction methods and sustainable material sourcing.",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-        />
-      </svg>
-    ),
-  },
-];
+const menuData: Record<MenuCategory, MenuItem[]> = {
+  appetizers: [
+    {
+      id: 1,
+      name: "Pan-Seared Scallops",
+      description: "Fresh scallops with cauliflower purée and crispy pancetta",
+      price: "K280",
+      image: "/assets/menu/scallops.jpg",
+      special: false,
+    },
+    {
+      id: 2,
+      name: "Zambian Beef Carpaccio",
+      description: "Thinly sliced local beef with rocket, parmesan and lemon",
+      price: "K220",
+      image: "/assets/menu/carpaccio.jpg",
+      special: true,
+    },
+    {
+      id: 3,
+      name: "Wild Mushroom Bruschetta",
+      description: "Local mushrooms on artisan bread with herbs",
+      price: "K180",
+      image: "/assets/menu/bruschetta.jpg",
+      special: false,
+    },
+    {
+      id: 4,
+      name: "Smoked Salmon Terrine",
+      description: "House-smoked salmon with avocado and citrus",
+      price: "K260",
+      image: "/assets/menu/salmon.jpg",
+      special: false,
+    },
+  ],
+  mains: [
+    {
+      id: 5,
+      name: "Grilled Zambezi Bream",
+      description: "Fresh local fish with seasonal vegetables and herb butter",
+      price: "K420",
+      image: "/assets/menu/bream.jpg",
+      special: true,
+    },
+    {
+      id: 6,
+      name: "Tender Beef Fillet",
+      description: "Prime cut with roasted vegetables and red wine jus",
+      price: "K520",
+      image: "/assets/menu/beef-fillet.jpg",
+      special: false,
+    },
+    {
+      id: 7,
+      name: "Chicken Supreme",
+      description: "Free-range chicken breast with mushroom risotto",
+      price: "K380",
+      image: "/assets/menu/chicken.jpg",
+      special: false,
+    },
+    {
+      id: 8,
+      name: "Vegetarian Wellington",
+      description: "Seasonal vegetables wrapped in flaky pastry",
+      price: "K320",
+      image: "/assets/menu/wellington.jpg",
+      special: false,
+    },
+    {
+      id: 9,
+      name: "Lamb Rack",
+      description: "Herb-crusted lamb with rosemary jus and roasted potatoes",
+      price: "K480",
+      image: "/assets/menu/lamb.jpg",
+      special: true,
+    },
+  ],
+  desserts: [
+    {
+      id: 10,
+      name: "Chocolate Fondant",
+      description: "Warm chocolate cake with vanilla ice cream",
+      price: "K180",
+      image: "/assets/menu/fondant.jpg",
+      special: false,
+    },
+    {
+      id: 11,
+      name: "Baobab Cheesecake",
+      description: "Local baobab fruit cheesecake with honey drizzle",
+      price: "K160",
+      image: "/assets/menu/cheesecake.jpg",
+      special: true,
+    },
+    {
+      id: 12,
+      name: "Crème Brûlée",
+      description: "Classic vanilla custard with caramelized sugar",
+      price: "K170",
+      image: "/assets/menu/brulee.jpg",
+      special: false,
+    },
+    {
+      id: 13,
+      name: "Seasonal Fruit Tart",
+      description: "Fresh tropical fruits on pastry cream",
+      price: "K150",
+      image: "/assets/menu/fruit-tart.jpg",
+      special: false,
+    },
+  ],
+  beverages: [
+    {
+      id: 14,
+      name: "Local Coffee Blend",
+      description: "Freshly roasted Zambian coffee beans",
+      price: "K45",
+      image: "/assets/menu/coffee.jpg",
+      special: false,
+    },
+    {
+      id: 15,
+      name: "Premium Wine Selection",
+      description: "Curated selection of local and international wines",
+      price: "K120-K400",
+      image: "/assets/menu/wine.jpg",
+      special: true,
+    },
+    {
+      id: 16,
+      name: "Fresh Fruit Juices",
+      description: "Locally sourced seasonal fruit juices",
+      price: "K65",
+      image: "/assets/menu/juice.jpg",
+      special: false,
+    },
+    {
+      id: 17,
+      name: "Craft Cocktails",
+      description: "Signature cocktails with premium spirits",
+      price: "K180-K250",
+      image: "/assets/menu/cocktails.jpg",
+      special: true,
+    },
+  ],
+};
 
-export default function AboutPage() {
+export default function ElegantMenu() {
+  const [activeCategory, setActiveCategory] =
+    useState<MenuCategory>("appetizers");
+  const [hoveredItem, setHoveredItem] = useState<MenuItem | null>(null);
+  const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const menuRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const categoryRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const itemRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  const menuItemsContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Initial animation for menu container
+    if (menuRef.current) {
+      gsap.fromTo(
+        menuRef.current,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    // Animate items when category changes
+    if (!isTransitioning && menuItemsContainerRef.current) {
+      const items = menuItemsContainerRef.current.children;
+
+      gsap.fromTo(
+        items,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power2.out",
+        }
+      );
+    }
+  }, [activeCategory, isTransitioning]);
+
+  const handleCategoryChange = (category: MenuCategory) => {
+    if (category !== activeCategory && !isTransitioning) {
+      setIsTransitioning(true);
+
+      // Hide hovered item during transition
+      setHoveredItem(null);
+
+      // Animate out current items
+      if (menuItemsContainerRef.current) {
+        const currentItems = menuItemsContainerRef.current.children;
+
+        gsap.to(currentItems, {
+          opacity: 0,
+          y: -20,
+          duration: 0.3,
+          stagger: 0.05,
+          ease: "power2.in",
+          onComplete: () => {
+            setActiveCategory(category);
+            setIsTransitioning(false);
+          },
+        });
+      } else {
+        // Fallback if ref is not available
+        setActiveCategory(category);
+        setIsTransitioning(false);
+      }
+
+      // Animate category tab
+      const categoryEl = categoryRefs.current[category];
+      if (categoryEl) {
+        gsap.fromTo(
+          categoryEl,
+          { scale: 1 },
+          { scale: 1.05, duration: 0.2, yoyo: true, repeat: 1 }
+        );
+      }
+    }
+  };
+
+  const handleMouseEnter = (
+    item: MenuItem,
+    event: React.MouseEvent<HTMLDivElement>
+  ) => {
+    if (isTransitioning) return;
+
+    setHoveredItem(item);
+    const rect = event.currentTarget.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+
+    // Adjust position to prevent image from going off-screen
+    let xPosition = rect.right + 20;
+    if (xPosition + 250 > viewportWidth) {
+      xPosition = rect.left - 270; // Show on left side if no space on right
+    }
+
+    setImagePosition({
+      x: Math.max(20, xPosition), // Ensure minimum 20px from edge
+      y: Math.max(20, rect.top + rect.height / 2 - 100),
+    });
+
+    // Animate image entrance
+    if (imageRef.current) {
+      gsap.fromTo(
+        imageRef.current,
+        { opacity: 0, scale: 0.8, x: -20 },
+        { opacity: 1, scale: 1, x: 0, duration: 0.4, ease: "back.out(1.7)" }
+      );
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isTransitioning) return;
+
+    // Animate image exit
+    if (imageRef.current) {
+      gsap.to(imageRef.current, {
+        opacity: 0,
+        scale: 0.8,
+        x: 20,
+        duration: 0.3,
+        ease: "power2.in",
+        onComplete: () => setHoveredItem(null),
+      });
+    } else {
+      setHoveredItem(null);
+    }
+  };
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (hoveredItem && !isTransitioning) {
+      const rect = event.currentTarget.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+
+      let xPosition = rect.right + 20;
+      if (xPosition + 250 > viewportWidth) {
+        xPosition = rect.left - 270;
+      }
+
+      setImagePosition({
+        x: Math.max(20, xPosition),
+        y: Math.max(20, rect.top + rect.height / 2 - 100),
+      });
+    }
+  };
+
+  const categories = [
+    { key: "appetizers" as MenuCategory, label: "Appetizers", icon: "🥗" },
+    { key: "mains" as MenuCategory, label: "Main Courses", icon: "🍽️" },
+    { key: "desserts" as MenuCategory, label: "Desserts", icon: "🍰" },
+    { key: "beverages" as MenuCategory, label: "Beverages", icon: "🍷" },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100">
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-stone-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20"></div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-          <div className="text-center">
-            <h1 className="text-5xl font-playfair md:text-7xl font-bold mb-8 bg-gradient-to-r from-white via-stone-200 to-amber-200 bg-clip-text text-transparent">
-              Our Story
-            </h1>
-            <p className="text-xl font-jost md:text-2xl text-stone-300 max-w-4xl mx-auto leading-relaxed">
-              For over two decades, Great Lakes Construction has been
-              transforming London homes with exceptional craftsmanship,
-              innovative design, and unwavering commitment to excellence.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Company Story Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-4xl font-jost md:text-5xl font-bold text-slate-900 mb-6">
-                Built on Excellence
-              </h2>
-              <p className="text-xl font-jost text-slate-600 leading-relaxed mb-6">
-                Great Lakes Construction was born from a simple belief: every
-                home deserves to be extraordinary. What started as a small team
-                of passionate craftsmen has grown into London&apos;s premier
-                luxury construction and renovation company.
-              </p>
-              <p className="text-lg font-jost text-slate-600 leading-relaxed mb-6">
-                Our journey began in 2003 when our founder, James Mitchell,
-                recognized the need for a construction company that truly
-                understood the unique demands of luxury home renovation. With a
-                background in fine carpentry and an eye for design, James
-                assembled a team of master craftsmen who shared his vision.
-              </p>
-              <p className="text-lg font-jost text-slate-600 leading-relaxed">
-                Today, we&apos;ve completed over 500 projects across London and
-                the Home Counties, each one a testament to our commitment to
-                quality, innovation, and client satisfaction.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-8">
-              <div className="text-center font-jost p-6 bg-white rounded-2xl shadow-lg">
-                <div className="text-3xl font-bold text-amber-600 mb-2">
-                  500+
-                </div>
-                <div className="text-slate-700 font-medium">
-                  Projects Completed
-                </div>
-              </div>
-              <div className="text-center p-6 bg-white rounded-2xl shadow-lg">
-                <div className="text-3xl font-bold text-amber-600 mb-2">
-                  20+
-                </div>
-                <div className="text-slate-700 font-medium">
-                  Years Experience
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="relative z-10">
-              <Image
-                src="/about/company-story.jpg"
-                alt="Great Lakes Construction workshop"
-                width={600}
-                height={400}
-                className="rounded-3xl shadow-2xl object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -right-6 w-full h-full bg-gradient-to-br from-amber-200 to-orange-300 rounded-3xl -z-10"></div>
-          </div>
-        </div>
-      </div>
-
-      {/* Values Section */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-stone-900 text-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair md:text-5xl font-bold mb-6">
-              Our Core Values
-            </h2>
-            <p className="text-xl font-jost text-stone-300 max-w-3xl mx-auto">
-              The principles that guide everything we do, from initial
-              consultation to final walkthrough
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div
-                key={index}
-                className="text-center p-8 rounded-2xl bg-white/5 backdrop-blur hover:bg-white/10 transition-all duration-300 hover:scale-105"
-              >
-                <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-jost font-bold mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-stone-300 font-jost leading-relaxed">
-                  {value.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Timeline Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="text-center font-jost mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Our Journey
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Key milestones that have shaped Great Lakes Construction into the
-            company we are today
+    <div className="min-h-screen bg-gradient-to-br from-stone-50 to-green-50 py-16 px-4">
+      <div ref={menuRef} className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-serif text-stone-800 mb-4">
+            Our Menu
+          </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-green-400 mx-auto mb-6"></div>
+          <p className="text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
+            Experience culinary excellence with our carefully crafted dishes,
+            featuring the finest local ingredients and international techniques.
           </p>
         </div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute font-jost left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-amber-400 to-orange-600 h-full hidden lg:block"></div>
+        {/* Category Navigation */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category.key}
+              ref={(el) => {
+                categoryRefs.current[category.key] = el;
+              }}
+              onClick={() => handleCategoryChange(category.key)}
+              disabled={isTransitioning}
+              className={`px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed ${
+                activeCategory === category.key
+                  ? "bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg transform scale-105"
+                  : "bg-white text-stone-700 hover:bg-stone-100 shadow-md hover:shadow-lg"
+              }`}
+            >
+              <span className="text-2xl">{category.icon}</span>
+              {category.label}
+            </button>
+          ))}
+        </div>
 
-          <div className="space-y-12">
-            {milestones.map((milestone, index) => (
-              <div
-                key={index}
-                className={`flex items-center ${
-                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } flex-col lg:gap-16`}
-              >
-                <div className="flex-1 lg:text-right lg:pr-8">
-                  <div
-                    className={`bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-shadow duration-300 ${
-                      index % 2 === 0 ? "" : "lg:text-left lg:pl-8 lg:pr-0"
-                    }`}
-                  >
-                    <div className="text-3xl font-jost font-bold text-amber-600 mb-2">
-                      {milestone.year}
+        {/* Menu Items */}
+        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute top-0 left-0 w-full h-full"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              }}
+            />
+          </div>
+
+          <div className="relative z-10">
+            <h2 className="text-3xl font-serif text-stone-800 mb-8 text-center capitalize">
+              {categories.find((cat) => cat.key === activeCategory)?.label}
+            </h2>
+
+            <div ref={menuItemsContainerRef} className="grid gap-6">
+              {menuData[activeCategory].map((item) => (
+                <div
+                  key={item.id}
+                  ref={(el) => {
+                    itemRefs.current[item.id] = el;
+                  }}
+                  className="group cursor-pointer p-6 rounded-2xl hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 transition-all duration-500 border border-transparent hover:border-green-200"
+                  onMouseEnter={(e) => handleMouseEnter(item, e)}
+                  onMouseLeave={handleMouseLeave}
+                  onMouseMove={handleMouseMove}
+                >
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="text-2xl font-serif text-stone-800 group-hover:text-green-700 transition-colors duration-300">
+                          {item.name}
+                        </h3>
+                        {item.special && (
+                          <span className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Chef&apos;s Special
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-stone-600 leading-relaxed max-w-2xl">
+                        {item.description}
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-jost font-bold text-slate-900 mb-4">
-                      {milestone.title}
-                    </h3>
-                    <p className="text-slate-600 font-jost leading-relaxed">
-                      {milestone.description}
+                    <div className="ml-6">
+                      <span className="text-2xl font-bold text-green-600">
+                        {item.price}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Hover indicator */}
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-full h-px bg-gradient-to-r from-transparent via-green-300 to-transparent"></div>
+                    <p className="text-center text-sm text-green-600 mt-2">
+                      Hover to preview
                     </p>
                   </div>
                 </div>
-
-                {/* Timeline dot */}
-                <div className="w-4 h-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full border-4 border-white shadow-lg z-10 hidden lg:block"></div>
-
-                <div className="flex-1"></div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Team Section */}
-      <div className="bg-gradient-to-br from-amber-50 to-orange-100 py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-playfair md:text-5xl font-bold text-slate-900 mb-6">
-              Meet Our Team
-            </h2>
-            <p className="text-xl font-jost text-slate-600 max-w-3xl mx-auto">
-              The master craftsmen, designers, and project managers who bring
-              your vision to life
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
-              >
-                <div className="relative h-80">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <div className="absolute font-jost top-4 right-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    {member.experience}
-                  </div>
-                </div>
-
-                <div className="p-8 font-jost">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
-                    {member.name}
-                  </h3>
-                  <div className="text-amber-600 font-semibold mb-4">
-                    {member.role}
-                  </div>
-                  <p className="text-slate-600 leading-relaxed mb-6">
-                    {member.description}
-                  </p>
-
-                  <div>
-                    <h4 className="text-sm font-bold text-slate-800 mb-3">
-                      Specialties:
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {member.specialties.map((specialty, idx) => (
-                        <span
-                          key={idx}
-                          className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium"
-                        >
-                          {specialty}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-stone-900 text-white py-20">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-playfair md:text-5xl font-bold mb-6">
-            Ready to Work With Us?
-          </h2>
-          <p className="text-xl font-jost text-stone-300 mb-8 leading-relaxed">
-            Let&apos;s discuss how we can bring your vision to life with our
-            expert craftsmanship and dedication to excellence.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex font-jost items-center px-8 py-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white text-lg font-bold rounded-xl hover:from-amber-700 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-xl"
-            >
-              Start Your Project
-              <svg
-                className="ml-2 w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+        {/* Floating Image Preview */}
+        {hoveredItem && (
+          <div
+            ref={imageRef}
+            className="fixed z-50 pointer-events-none"
+            style={{
+              left: `${imagePosition.x}px`,
+              top: `${imagePosition.y}px`,
+            }}
+          >
+            <div className="bg-white rounded-2xl shadow-2xl p-4 border border-green-200">
+              <div className="relative w-48 h-36 rounded-xl overflow-hidden">
+                <Image
+                  src={hoveredItem.image}
+                  alt={hoveredItem.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 200px) 100vw, 200px"
                 />
-              </svg>
-            </Link>
-            <Link
-              href="/kitchens"
-              className="inline-flex font-jost items-center px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-bold rounded-xl hover:bg-white hover:text-slate-900 transition-all duration-300"
-            >
-              View Our Work
-            </Link>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+              <div className="mt-3">
+                <h4 className="font-serif text-stone-800 text-lg">
+                  {hoveredItem.name}
+                </h4>
+                <p className="text-amber-600 font-bold">{hoveredItem.price}</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Footer */}
+        <div className="text-center mt-16">
+          <div className="max-w-2xl mx-auto">
+            <p className="text-stone-600 mb-4">
+              All dishes are prepared fresh to order using locally sourced
+              ingredients where possible.
+            </p>
+            <p className="text-stone-500 text-sm">
+              Prices are subject to change. Please inform our staff of any
+              dietary requirements or allergies.
+            </p>
           </div>
         </div>
       </div>

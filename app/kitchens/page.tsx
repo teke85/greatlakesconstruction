@@ -15,7 +15,8 @@ const kitchens = [
       "Soft-Close Drawer System",
       "Under-Cabinet LED Lighting",
     ],
-    image: "/kitchens/windsor-classic.jpg",
+    image:
+      "https://res.cloudinary.com/dpeg7wc34/image/upload/v1753967913/j_pull_in_pebble_grey_2350_cuwsdq.jpg",
   },
   {
     id: 2,
@@ -30,7 +31,8 @@ const kitchens = [
       "Chrome Professional Handles",
       "Smart Storage Solutions",
     ],
-    image: "/kitchens/hampton-luxe.jpg",
+    image:
+      "https://res.cloudinary.com/dpeg7wc34/image/upload/v1753967912/milano_shaker_super_slim_ermine_buckingham_green_matt_2739_cvyhvk.png",
   },
   {
     id: 3,
@@ -45,7 +47,8 @@ const kitchens = [
       "Custom Crown Molding",
       "Wine Storage Integration",
     ],
-    image: "/kitchens/mayfair-elite.jpg",
+    image:
+      "https://res.cloudinary.com/dpeg7wc34/image/upload/v1753967912/milano_shaker_forest_autumn_harvest_grain_2863_bqsvhi.jpg",
   },
   {
     id: 4,
@@ -60,7 +63,8 @@ const kitchens = [
       "Integrated LED Strip Lighting",
       "Concealed Storage Systems",
     ],
-    image: "/kitchens/chelsea-modern.jpg",
+    image:
+      "https://res.cloudinary.com/dpeg7wc34/image/upload/v1753967912/shaker_super_slim_hd_kitchen_in_pebble_grey_hd_smoke_blue_2950_vfd72j.jpg",
   },
   {
     id: 5,
@@ -75,7 +79,8 @@ const kitchens = [
       "Raised Panel Doors",
       "Custom Spice Rack System",
     ],
-    image: "/kitchens/kensington-heritage.jpg",
+    image:
+      "https://res.cloudinary.com/dpeg7wc34/image/upload/v1753967912/shaker_aspen_in_olive_green_mushroom_matt_3255_remh47.jpg",
   },
   {
     id: 6,
@@ -90,7 +95,8 @@ const kitchens = [
       "Soft-Touch Mechanisms",
       "Modular Design System",
     ],
-    image: "/kitchens/belgravia-contemporary.jpg",
+    image:
+      "https://res.cloudinary.com/dpeg7wc34/image/upload/v1753883370/shaker_chelsea_ermine_kitchen_in_olive_green_pillow_1844_mtfdst.jpg",
   },
 ];
 
