@@ -157,7 +157,7 @@ export default function AboutPage() {
           <div className="relative">
             <div className="relative z-10">
               <Image
-                src="/about/company-story.jpg"
+                src="https://res.cloudinary.com/dpeg7wc34/image/upload/v1753967912/shaker_super_slim_hd_kitchen_in_pebble_grey_hd_smoke_blue_2950_vfd72j.jpg"
                 alt="Great Lakes Construction workshop"
                 width={600}
                 height={400}
