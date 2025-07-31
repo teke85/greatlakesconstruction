@@ -138,14 +138,14 @@ export default function KitchensPage() {
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
                   />
-                  <div className="absolute top-6 right-6 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-2 rounded-full font-bold text-lg shadow-lg">
+                  <div className="absolute top-6 right-6 bg-gradient-to-r from-emerald-600 to-green-700 text-white px-4 py-2 rounded-full font-bold text-lg shadow-lg">
                     {kitchen.price}
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-8">
-                  <h3 className="text-3xl font-playfair font-bold text-slate-900 mb-4 group-hover:text-amber-600 transition-colors">
+                  <h3 className="text-3xl font-playfair font-bold text-slate-900 mb-4 group-hover:text-emerald-600 transition-colors">
                     {kitchen.name}
                   </h3>
                   <p className="text-slate-600 font-jost text-lg leading-relaxed mb-6">
@@ -163,7 +163,7 @@ export default function KitchensPage() {
                           key={idx}
                           className="flex font-jost items-center text-slate-700"
                         >
-                          <div className="w-2 h-2 bg-amber-500 rounded-full mr-3 flex-shrink-0"></div>
+                          <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3 flex-shrink-0"></div>
                           <span className="text-sm font-medium">{feature}</span>
                         </div>
                       ))}
@@ -173,7 +173,7 @@ export default function KitchensPage() {
                   {/* CTA Button */}
                   <Link
                     href="/contact"
-                    className="inline-flex font-jost items-center px-8 py-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white font-bold rounded-xl hover:from-amber-700 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="inline-flex font-jost items-center px-8 py-4 bg-gradient-to-r from-emerald-600 to-green-700 text-white font-bold rounded-xl hover:from-emerald-700 hover:to-green-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     Request Quote
                     <svg
@@ -247,7 +247,7 @@ export default function KitchensPage() {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-br from-amber-50 to-orange-100 py-20">
+      <div className="bg-gradient-to-br from-emerald-50 to-green-100 py-20">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-playfair md:text-5xl font-bold text-slate-900 mb-6">
             Ready to Create Your Dream Kitchen?
@@ -258,7 +258,7 @@ export default function KitchensPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex font-jost items-center px-10 py-5 bg-gradient-to-r from-amber-600 to-orange-600 text-white text-lg font-bold rounded-xl hover:from-amber-700 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+            className="inline-flex font-jost items-center px-10 py-5 bg-gradient-to-r from-emerald-600 to-green-700 text-white text-lg font-bold rounded-xl hover:from-emerald-700 hover:to-green-800 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
           >
             Start Your Project Today
             <svg

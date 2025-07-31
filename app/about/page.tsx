@@ -94,7 +94,7 @@ export default function AboutPage() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div className="text-center">
-            <h1 className="text-5xl font-playfair md:text-7xl font-bold mb-8 bg-gradient-to-r from-white via-stone-200 to-amber-200 bg-clip-text text-transparent">
+            <h1 className="text-5xl font-playfair md:text-7xl font-bold mb-8 bg-gradient-to-r from-white via-stone-200 to-emerald-200 bg-clip-text text-transparent">
               Our Story
             </h1>
             <p className="text-xl font-jost md:text-2xl text-stone-300 max-w-4xl mx-auto leading-relaxed">
@@ -136,7 +136,7 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-2 gap-8">
               <div className="text-center p-6 bg-white rounded-2xl shadow-lg">
-                <div className="text-3xl font-jost font-bold text-amber-600 mb-2">
+                <div className="text-3xl font-jost font-bold text-emerald-600 mb-2">
                   500+
                 </div>
                 <div className="text-slate-700 font-jost font-medium">
@@ -144,7 +144,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="text-center p-6 bg-white rounded-2xl shadow-lg">
-                <div className="text-3xl font-jost font-bold text-amber-600 mb-2">
+                <div className="text-3xl font-jost font-bold text-emerald-600 mb-2">
                   20+
                 </div>
                 <div className="text-slate-700 font-jost font-medium">
@@ -164,7 +164,7 @@ export default function AboutPage() {
                 className="rounded-3xl shadow-2xl object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 w-full h-full bg-gradient-to-br from-amber-200 to-orange-300 rounded-3xl -z-10"></div>
+            <div className="absolute -bottom-6 -right-6 w-full h-full bg-gradient-to-br from-emerald-200 to-green-300 rounded-3xl -z-10"></div>
           </div>
         </div>
       </div>
@@ -188,7 +188,7 @@ export default function AboutPage() {
                 key={index}
                 className="text-center p-8 rounded-2xl bg-white/5 backdrop-blur hover:bg-white/10 transition-all duration-300 hover:scale-105"
               >
-                <div className="w-16 h-16 font-jost bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white">
+                <div className="w-16 h-16 font-jost bg-gradient-to-r from-emerald-600 to-green-700 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white">
                   {value.icon}
                 </div>
                 <h3 className="text-xl font-jost font-bold mb-4">
@@ -229,7 +229,7 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex font-jost items-center px-8 py-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white text-lg font-bold rounded-xl hover:from-amber-700 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-xl"
+              className="inline-flex font-jost items-center px-8 py-4 bg-gradient-to-r from-emerald-600 to-green-700 text-white text-lg font-bold rounded-xl hover:from-emerald-700 hover:to-green-800 transform hover:scale-105 transition-all duration-300 shadow-xl"
             >
               Start Your Project
               <svg
