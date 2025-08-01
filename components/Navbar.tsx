@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,13 +14,10 @@ export default function Navbar() {
   return (
     <nav className="bg-white fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-24">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="font-bold flex flex-col font-jost text-xl bg-green-700 p-6 text-white">
-                GreatLakes
-                <span className="font-cormorant italic">Construction</span>
-              </span>
+              <Logo />
             </Link>
           </div>
 
