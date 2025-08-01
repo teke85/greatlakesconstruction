@@ -159,7 +159,7 @@ export default function ContactPage() {
                     </svg>
                   ),
                   title: "Email",
-                  content: "sales@greatlakesconstruction.online",
+                  content: "greatlakesconstructionltd9@gmail.com",
                   subtitle: "We'll respond within 24 hours",
                 },
                 {
