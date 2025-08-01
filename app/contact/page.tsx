@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -65,7 +66,7 @@ export default function ContactPage() {
           </p>
           <button
             onClick={() => setSubmitted(false)}
-            className="px-6 py-3 bg-gradient-to-r from-amber-600 to-orange-600 text-white font-bold rounded-xl hover:from-amber-700 hover:to-orange-700 transition-all duration-300"
+            className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-green-700 text-white font-bold rounded-xl hover:from-emerald-700 hover:to-green-800 transition-all duration-300"
           >
             Send Another Message
           </button>
@@ -78,7 +79,18 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100">
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-stone-900 text-white">
-        <div className="absolute inset-0 bg-black/20"></div>
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="https://res.cloudinary.com/dpeg7wc34/image/upload/v1753601441/j_pull_kitchen_in_cashmere_1811_gb8a0o.jpg"
+            alt="Great Lakes Construction contact background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-slate-900/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-5xl font-playfair md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-stone-300 bg-clip-text text-transparent">
@@ -201,7 +213,7 @@ export default function ContactPage() {
                   key={index}
                   className="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-xl flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-emerald-600 to-green-700 text-white rounded-xl flex items-center justify-center">
                     {item.icon}
                   </div>
                   <div>
@@ -220,7 +232,7 @@ export default function ContactPage() {
             </div>
 
             {/* Service Areas */}
-            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200">
+            <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-6 border border-emerald-200">
               <h3 className="text-xl font-jost font-bold text-slate-900 mb-4">
                 Service Areas
               </h3>
@@ -236,7 +248,7 @@ export default function ContactPage() {
                   "South Kensington",
                 ].map((area, index) => (
                   <div key={index} className="flex items-center">
-                    <div className="w-2 h-2 bg-amber-500 rounded-full mr-2"></div>
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></div>
                     <span className="text-sm font-medium">{area}</span>
                   </div>
                 ))}
@@ -262,7 +274,7 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="Your full name"
                   />
                 </div>
@@ -276,7 +288,7 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -292,7 +304,7 @@ export default function ContactPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="+44 20 1234 5678"
                   />
                 </div>
@@ -304,7 +316,7 @@ export default function ContactPage() {
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   >
                     <option value="">Select project type</option>
                     <option value="kitchen">Kitchen Renovation</option>
@@ -326,7 +338,7 @@ export default function ContactPage() {
                     name="budget"
                     value={formData.budget}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   >
                     <option value="">Select budget range</option>
                     <option value="1500-3000">£1,500 - £3,000</option>
@@ -344,7 +356,7 @@ export default function ContactPage() {
                     name="preferredContact"
                     value={formData.preferredContact}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   >
                     <option value="email">Email</option>
                     <option value="phone">Phone</option>
@@ -362,7 +374,7 @@ export default function ContactPage() {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={6}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors resize-none"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors resize-none"
                   placeholder="Tell us about your project vision, timeline, specific requirements, or any questions you have..."
                 ></textarea>
               </div>
@@ -370,7 +382,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 px-6 bg-gradient-to-r from-amber-600 to-orange-600 text-white font-bold rounded-xl hover:from-amber-700 hover:to-orange-700 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="w-full py-4 px-6 bg-gradient-to-r from-emerald-600 to-green-700 text-white font-bold rounded-xl hover:from-emerald-700 hover:to-green-800 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center">
@@ -480,7 +492,7 @@ export default function ContactPage() {
                 className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur hover:bg-white/10 transition-all duration-300"
               >
                 <div className="text-3xl font-jost mb-2">{stat.icon}</div>
-                <div className="text-3xl md:text-4xl font-bold text-amber-400 mb-2">
+                <div className="text-3xl md:text-4xl font-bold text-emerald-400 mb-2">
                   {stat.number}
                 </div>
                 <div className="text-stone-300 font-jost font-medium">
@@ -554,7 +566,7 @@ export default function ContactPage() {
               },
             ].map((item, index) => (
               <div key={index} className="text-center p-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white">
+                <div className="w-16 h-16 bg-gradient-to-r from-emerald-600 to-green-700 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-jost font-bold mb-3">

@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+"use client";
+
+import type React from "react";
+import { useState } from "react";
 import {
   Phone,
   Mail,
@@ -17,8 +20,8 @@ export default function GetQuotePage() {
     phone: "",
     address: "",
     city: "",
-    state: "",
-    zipCode: "",
+    area: "",
+    postcode: "",
     projectType: "",
     projectDescription: "",
     budget: "",
@@ -45,7 +48,6 @@ export default function GetQuotePage() {
     // Here you would typically send the data to your backend
     console.log("Form submitted:", formData);
     setIsSubmitted(true);
-
     // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
@@ -56,8 +58,8 @@ export default function GetQuotePage() {
         phone: "",
         address: "",
         city: "",
-        state: "",
-        zipCode: "",
+        area: "",
+        postcode: "",
         projectType: "",
         projectDescription: "",
         budget: "",
@@ -73,7 +75,7 @@ export default function GetQuotePage() {
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
           <CheckCircle className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-slate-800 mb-2">Thank You!</h2>
-          <p className="text-slate-600 mb-4">
+          <p className="text-slate-600 font-playfair mb-4">
             Your quote request has been submitted successfully. We&#39;ll get
             back to you within 24 hours.
           </p>
@@ -91,8 +93,10 @@ export default function GetQuotePage() {
       <div className="bg-slate-800 text-white py-12">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Get Your Free Quote</h1>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+            <h1 className="text-4xl font-playfair font-bold mb-4">
+              Get Your Free Quote
+            </h1>
+            <p className="text-xl text-slate-300 font-jost max-w-2xl mx-auto">
               Ready to transform your space? Tell us about your project and
               we&#39;ll provide you with a detailed, no-obligation quote within
               24 hours.
@@ -107,45 +111,41 @@ export default function GetQuotePage() {
           {/* Contact Info Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-lg p-6 sticky top-6">
-              <h3 className="text-xl font-bold text-slate-800 mb-6">
+              <h3 className="text-xl font-jost font-bold text-slate-800 mb-6">
                 Get In Touch
               </h3>
-
-              <div className="space-y-4">
+              <div className="space-y-4 font-jost">
                 <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-blue-600" />
+                  <Phone className="w-5 h-5 text-green-600" />
                   <div>
-                    <p className="font-medium text-slate-800">(555) 123-4567</p>
+                    <p className="font-medium text-slate-800">020 7123 4567</p>
                     <p className="text-sm text-slate-600">Mon-Fri 8AM-6PM</p>
                   </div>
                 </div>
-
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-blue-600" />
+                <div className="flex font-jost items-center space-x-3">
+                  <Mail className="w-5 h-5 text-green-600" />
                   <div>
                     <p className="font-medium text-slate-800">
-                      info@greatlakesconstruction.online
+                      info@londonconstruction.co.uk
                     </p>
                     <p className="text-sm text-slate-600">
                       We respond within 2 hours
                     </p>
                   </div>
                 </div>
-
                 <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-blue-600" />
+                  <MapPin className="w-5 h-5 text-green-600" />
                   <div>
                     <p className="font-medium text-slate-800">
-                      Great Lakes Region
+                      Greater London Area
                     </p>
                     <p className="text-sm text-slate-600">
-                      Serving Michigan & Beyond
+                      Serving London & Home Counties
                     </p>
                   </div>
                 </div>
               </div>
-
-              <div className="mt-8 pt-6 border-t border-slate-200">
+              <div className="mt-8 font-jost pt-6 border-t border-slate-200">
                 <h4 className="font-semibold text-slate-800 mb-4">
                   Our Services
                 </h4>
@@ -153,7 +153,7 @@ export default function GetQuotePage() {
                   <div className="flex items-center space-x-2">
                     <Home className="w-4 h-4 text-emerald-600" />
                     <span className="text-sm text-slate-600">
-                      Kitchen Remodeling
+                      Kitchen Refurbishment
                     </span>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -165,13 +165,13 @@ export default function GetQuotePage() {
                   <div className="flex items-center space-x-2">
                     <Hammer className="w-4 h-4 text-emerald-600" />
                     <span className="text-sm text-slate-600">
-                      Home Additions
+                      Home Extensions
                     </span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Home className="w-4 h-4 text-emerald-600" />
                     <span className="text-sm text-slate-600">
-                      Custom Builds
+                      Loft Conversions
                     </span>
                   </div>
                 </div>
@@ -180,8 +180,8 @@ export default function GetQuotePage() {
           </div>
 
           {/* Quote Form */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-lg p-8">
+          <div className="lg:col-span-2 font-jost">
+            <div className="bg-white font-jost rounded-lg shadow-lg p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Personal Information */}
                 <div>
@@ -216,7 +216,6 @@ export default function GetQuotePage() {
                       />
                     </div>
                   </div>
-
                   <div className="grid md:grid-cols-2 gap-4 mt-4">
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">
@@ -241,6 +240,7 @@ export default function GetQuotePage() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         required
+                        placeholder="e.g. 020 7123 4567"
                         className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       />
                     </div>
@@ -266,7 +266,6 @@ export default function GetQuotePage() {
                         className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       />
                     </div>
-
                     <div className="grid md:grid-cols-3 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">
@@ -278,38 +277,62 @@ export default function GetQuotePage() {
                           value={formData.city}
                           onChange={handleInputChange}
                           required
+                          placeholder="e.g. London"
                           className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">
-                          State *
+                          Area *
                         </label>
                         <select
-                          name="state"
-                          value={formData.state}
+                          name="area"
+                          value={formData.area}
                           onChange={handleInputChange}
                           required
                           className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         >
-                          <option value="">Select State</option>
-                          <option value="MI">Michigan</option>
-                          <option value="OH">Ohio</option>
-                          <option value="IN">Indiana</option>
-                          <option value="IL">Illinois</option>
-                          <option value="WI">Wisconsin</option>
+                          <option value="">Select Area</option>
+                          <option value="central-london">Central London</option>
+                          <option value="westminster">Westminster</option>
+                          <option value="kensington">Kensington</option>
+                          <option value="chelsea">Chelsea</option>
+                          <option value="mayfair">Mayfair</option>
+                          <option value="belgravia">Belgravia</option>
+                          <option value="knightsbridge">Knightsbridge</option>
+                          <option value="south-kensington">
+                            South Kensington
+                          </option>
+                          <option value="marylebone">Marylebone</option>
+                          <option value="fitzrovia">Fitzrovia</option>
+                          <option value="bloomsbury">Bloomsbury</option>
+                          <option value="covent-garden">Covent Garden</option>
+                          <option value="shoreditch">Shoreditch</option>
+                          <option value="islington">Islington</option>
+                          <option value="camden">Camden</option>
+                          <option value="hampstead">Hampstead</option>
+                          <option value="notting-hill">Notting Hill</option>
+                          <option value="paddington">Paddington</option>
+                          <option value="canary-wharf">Canary Wharf</option>
+                          <option value="greenwich">Greenwich</option>
+                          <option value="richmond">Richmond</option>
+                          <option value="wimbledon">Wimbledon</option>
+                          <option value="clapham">Clapham</option>
+                          <option value="battersea">Battersea</option>
+                          <option value="other">Other</option>
                         </select>
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">
-                          ZIP Code *
+                          Postcode *
                         </label>
                         <input
                           type="text"
-                          name="zipCode"
-                          value={formData.zipCode}
+                          name="postcode"
+                          value={formData.postcode}
                           onChange={handleInputChange}
                           required
+                          placeholder="e.g. SW1A 1AA"
                           className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
                       </div>
@@ -335,20 +358,24 @@ export default function GetQuotePage() {
                         className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       >
                         <option value="">Select Project Type</option>
-                        <option value="kitchen-remodel">Kitchen Remodel</option>
+                        <option value="kitchen-refurbishment">
+                          Kitchen Refurbishment
+                        </option>
                         <option value="bathroom-renovation">
                           Bathroom Renovation
                         </option>
-                        <option value="home-addition">Home Addition</option>
-                        <option value="basement-finishing">
-                          Basement Finishing
+                        <option value="home-extension">Home Extension</option>
+                        <option value="loft-conversion">Loft Conversion</option>
+                        <option value="basement-conversion">
+                          Basement Conversion
                         </option>
-                        <option value="custom-build">Custom Home Build</option>
+                        <option value="full-house-renovation">
+                          Full House Renovation
+                        </option>
                         <option value="commercial">Commercial Project</option>
                         <option value="other">Other</option>
                       </select>
                     </div>
-
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">
                         Project Description *
@@ -363,7 +390,6 @@ export default function GetQuotePage() {
                         className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       />
                     </div>
-
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">
@@ -376,14 +402,14 @@ export default function GetQuotePage() {
                           className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         >
                           <option value="">Select Budget Range</option>
-                          <option value="under-25k">Under $25,000</option>
-                          <option value="25k-50k">$25,000 - $50,000</option>
-                          <option value="50k-100k">$50,000 - $100,000</option>
-                          <option value="100k-200k">$100,000 - $200,000</option>
-                          <option value="over-200k">Over $200,000</option>
+                          <option value="under-15k">Under £15,000</option>
+                          <option value="15k-30k">£15,000 - £30,000</option>
+                          <option value="30k-60k">£30,000 - £60,000</option>
+                          <option value="60k-100k">£60,000 - £100,000</option>
+                          <option value="100k-200k">£100,000 - £200,000</option>
+                          <option value="over-200k">Over £200,000</option>
                         </select>
                       </div>
-
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">
                           Desired Timeline
@@ -403,7 +429,6 @@ export default function GetQuotePage() {
                         </select>
                       </div>
                     </div>
-
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">
                         Preferred Contact Method
@@ -461,10 +486,9 @@ export default function GetQuotePage() {
                   >
                     Get My Free Quote
                   </button>
-
                   <p className="text-sm text-slate-600 text-center mt-3">
-                    By submitting this form, you agree to be contacted by Great
-                    Lakes Construction regarding your project.
+                    By submitting this form, you agree to be contacted by London
+                    Construction regarding your project.
                   </p>
                 </div>
               </form>
@@ -491,7 +515,7 @@ export default function GetQuotePage() {
             </div>
             <div>
               <div className="text-3xl font-bold text-amber-400 mb-2">
-                10+ Years
+                15+ Years
               </div>
               <div className="text-slate-300">Industry Experience</div>
             </div>
