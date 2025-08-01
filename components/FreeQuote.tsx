@@ -118,7 +118,9 @@ export default function GetQuotePage() {
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-green-600" />
                   <div>
-                    <p className="font-medium text-slate-800">020 7123 4567</p>
+                    <p className="font-medium text-slate-800">
+                      +44 (7586) 832927
+                    </p>
                     <p className="text-sm text-slate-600">Mon-Fri 8AM-6PM</p>
                   </div>
                 </div>
@@ -126,7 +128,7 @@ export default function GetQuotePage() {
                   <Mail className="w-5 h-5 text-green-600" />
                   <div>
                     <p className="font-medium text-slate-800">
-                      info@londonconstruction.co.uk
+                      info@greatlakesconstruction.online
                     </p>
                     <p className="text-sm text-slate-600">
                       We respond within 2 hours
@@ -482,7 +484,7 @@ export default function GetQuotePage() {
                 <div className="pt-6">
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   >
                     Get My Free Quote
                   </button>
