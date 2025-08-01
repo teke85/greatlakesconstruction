@@ -212,7 +212,7 @@ function Hero() {
                 </p>
                 <Link
                   href="/kitchens"
-                  className="luxury-button font-jost text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center group"
+                  className="luxury-button font-jost text-green-600 font-semibold hover:text-green-800 inline-flex items-center group"
                 >
                   View Details
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -246,7 +246,7 @@ function Hero() {
                 </p>
                 <Link
                   href="/kitchens"
-                  className="luxury-button font-jost text-blue-600 font-semibold hover:text-blue-800 inline-flex items-center group"
+                  className="luxury-button font-jost text-green-600 font-semibold hover:text-green-800 inline-flex items-center group"
                 >
                   View Details
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -280,7 +280,7 @@ function Hero() {
                 </p>
                 <Link
                   href="/kitchens"
-                  className="luxury-button font-jost text-green-600-600 font-semibold hover:text-green-800 inline-flex items-center group"
+                  className="luxury-button font-jost text-green-600 font-semibold hover:text-green-800 inline-flex items-center group"
                 >
                   View Details
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

@@ -104,8 +104,18 @@ export default function KitchensPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-stone-900 text-white">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <div
+        className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-stone-900 text-white bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dpeg7wc34/image/upload/v1753596414/j_pull_kitchen_in_white_gloss_1702_mpx1oa.jpg')`,
+        }}
+      >
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/50"></div>
+        {/* Gradient overlay to blend with the design */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-800/60 to-stone-900/80"></div>
+
+        {/* Hero Content */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-5xl font-playfair md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-stone-300 bg-clip-text text-transparent">
@@ -132,7 +142,7 @@ export default function KitchensPage() {
                 {/* Image Container */}
                 <div className="relative h-80 overflow-hidden">
                   <Image
-                    src={kitchen.image}
+                    src={kitchen.image || "/placeholder.svg"}
                     alt={kitchen.name}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -142,7 +152,6 @@ export default function KitchensPage() {
                     {kitchen.price}
                   </div>
                 </div>
-
                 {/* Content */}
                 <div className="p-8">
                   <h3 className="text-3xl font-playfair font-bold text-slate-900 mb-4 group-hover:text-emerald-600 transition-colors">
@@ -151,7 +160,6 @@ export default function KitchensPage() {
                   <p className="text-slate-600 font-jost text-lg leading-relaxed mb-6">
                     {kitchen.description}
                   </p>
-
                   {/* Features */}
                   <div className="mb-8">
                     <h4 className="text-xl font-jost font-semibold text-slate-800 mb-4">
@@ -169,7 +177,6 @@ export default function KitchensPage() {
                       ))}
                     </div>
                   </div>
-
                   {/* CTA Button */}
                   <Link
                     href="/contact"
@@ -209,7 +216,6 @@ export default function KitchensPage() {
               construction
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {

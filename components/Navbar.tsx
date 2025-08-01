@@ -1,10 +1,14 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (path: string) => pathname === path;
 
   return (
     <nav className="bg-white fixed w-full top-0 z-50">
@@ -23,31 +27,51 @@ export default function Navbar() {
             <div className="ml-10 font-[family-name:var(--font-jost)] flex items-baseline space-x-8">
               <Link
                 href="/"
-                className="text-gray-700 hover:text-green-600 px-3 py-2 font-medium"
+                className={`px-3 py-2 rounded-md font-medium transition-colors ${
+                  isActive("/")
+                    ? "bg-green-700 text-white"
+                    : "text-gray-700 hover:text-green-600 hover:bg-green-50"
+                }`}
               >
                 Home
               </Link>
               <Link
                 href="/kitchens"
-                className="text-gray-700 hover:text-green-600 px-3 py-2 font-medium"
+                className={`px-3 py-2 rounded-md font-medium transition-colors ${
+                  isActive("/kitchens")
+                    ? "bg-green-700 text-white"
+                    : "text-gray-700 hover:text-green-600 hover:bg-green-50"
+                }`}
               >
                 Kitchens
               </Link>
               <Link
                 href="/about"
-                className="text-gray-700 hover:text-green-600 px-3 py-2 font-medium"
+                className={`px-3 py-2 rounded-md font-medium transition-colors ${
+                  isActive("/about")
+                    ? "bg-green-700 text-white"
+                    : "text-gray-700 hover:text-green-600 hover:bg-green-50"
+                }`}
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className="text-gray-700 hover:text-green-600 px-3 py-2 font-medium"
+                className={`px-3 py-2 rounded-md font-medium transition-colors ${
+                  isActive("/contact")
+                    ? "bg-green-700 text-white"
+                    : "text-gray-700 hover:text-green-600 hover:bg-green-50"
+                }`}
               >
                 Contact
               </Link>
               <Link
                 href="/quote"
-                className="bg-green-700 text-white px-4 py-2 rounded-md hover:bg-green-600 font-medium"
+                className={`px-4 py-2 rounded-md font-medium transition-colors ${
+                  isActive("/quote")
+                    ? "bg-green-800 text-white"
+                    : "bg-green-700 text-white hover:bg-green-600"
+                }`}
               >
                 Get Quote
               </Link>
@@ -57,7 +81,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-blue-600"
+              className="text-gray-700 hover:text-green-600"
             >
               {isOpen ? (
                 <X className="h-6 w-6" />
@@ -73,31 +97,56 @@ export default function Navbar() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <Link
                 href="/"
-                className="block text-gray-700 hover:text-blue-600 px-3 py-2"
+                className={`block px-3 py-2 rounded-md transition-colors ${
+                  isActive("/")
+                    ? "bg-green-700 text-white"
+                    : "text-gray-700 hover:text-green-600 hover:bg-green-50"
+                }`}
+                onClick={() => setIsOpen(false)}
               >
                 Home
               </Link>
               <Link
                 href="/kitchens"
-                className="block text-gray-700 hover:text-blue-600 px-3 py-2"
+                className={`block px-3 py-2 rounded-md transition-colors ${
+                  isActive("/kitchens")
+                    ? "bg-green-700 text-white"
+                    : "text-gray-700 hover:text-green-600 hover:bg-green-50"
+                }`}
+                onClick={() => setIsOpen(false)}
               >
                 Kitchens
               </Link>
               <Link
                 href="/about"
-                className="block text-gray-700 hover:text-blue-600 px-3 py-2"
+                className={`block px-3 py-2 rounded-md transition-colors ${
+                  isActive("/about")
+                    ? "bg-green-700 text-white"
+                    : "text-gray-700 hover:text-green-600 hover:bg-green-50"
+                }`}
+                onClick={() => setIsOpen(false)}
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className="block text-gray-700 hover:text-blue-600 px-3 py-2"
+                className={`block px-3 py-2 rounded-md transition-colors ${
+                  isActive("/contact")
+                    ? "bg-green-700 text-white"
+                    : "text-gray-700 hover:text-green-600 hover:bg-green-50"
+                }`}
+                onClick={() => setIsOpen(false)}
               >
                 Contact
               </Link>
               <Link
                 href="/quote"
-                className="block bg-green-700 text-white px-3 py-2 rounded-md"
+                className={`block px-3 py-2 rounded-md transition-colors ${
+                  isActive("/quote")
+                    ? "bg-green-800 text-white"
+                    : "bg-green-700 text-white hover:bg-green-600"
+                }`}
+                onClick={() => setIsOpen(false)}
               >
                 Get Quote
               </Link>
