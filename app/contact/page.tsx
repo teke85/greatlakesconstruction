@@ -139,7 +139,7 @@ export default function ContactPage() {
                     </svg>
                   ),
                   title: "Phone",
-                  content: "+44 20 7123 4567",
+                  content: "+44 7586 832927",
                   subtitle: "Mon-Fri 8AM-6PM, Sat 9AM-4PM",
                 },
                 {
